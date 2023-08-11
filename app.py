@@ -21,9 +21,9 @@ df2=pd.read_csv('countries.csv')
 st.text("countries table")
 st.dataframe(df2.head())
 
-df4=pd.read_csv('sessions.csv')
-st.text("Sessions table")
-st.dataframe(df4.head())
+# df4=pd.read_csv('sessions.csv')
+# st.text("Sessions table")
+# st.dataframe(df4.head())
 
 df5=pd.read_csv('train_users_2.csv')
 st.text("train_users_2 table")
@@ -93,11 +93,11 @@ def combine_prompts(df, df2, df3, df4,df5,query_prompt):
     definition1 = create_table_definition_prompt(df,'age_gender')
     definition2 = create_table_definition_prompt(df2,'countries')
     definition3 = create_table_definition_prompt(df3,'test_users')
-    definition4 = create_table_definition_prompt(df4,'sessions')
+    #definition4 = create_table_definition_prompt(df4,'sessions')
     definition5 = create_table_definition_prompt(df5,'train_users_2')
     #column_descriptions = get_columns_values(df)
     query_init_string = f"### A query to answer: {query_prompt}\nSELECT"
-    return definition1+definition2+definition3+definition4+definition5+query_init_string
+    return definition1+definition2+definition3+definition5+query_init_string
 
 
 #GPT will complete the text above, thus we start to notify it to begin a SQL query by writing "\nSELECT"
