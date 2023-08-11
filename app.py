@@ -89,7 +89,7 @@ def create_table_definition_prompt(df,table_name):
 # nlp_text = prompt_input()
 
 
-def combine_prompts(df, df2, df3, df4,df5,query_prompt):
+def combine_prompts(df, df2, df3,df5,query_prompt):
     definition1 = create_table_definition_prompt(df,'age_gender')
     definition2 = create_table_definition_prompt(df2,'countries')
     definition3 = create_table_definition_prompt(df3,'test_users')
@@ -115,7 +115,7 @@ openai.api_key = "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"
 response = openai.Completion.create(
   model="text-davinci-003",
   #prompt="### sqlite SQL table, with its properties:## test(id,date_account_created,timestamp_first_active,date_first_booking,gender,age,signup_method,signup_flow,language,affiliate_channel,affiliate_provider,first_affiliate_tracked,signup_app,first_device_type,first_browser)#### A query to answer: number of women having iphone deviceSELECT"
-  prompt=combine_prompts(df,df2,df3,df4,df5, nlp_text),
+  prompt=combine_prompts(df,df2,df3,df5, nlp_text),
 
   temperature=0,
   max_tokens=150,
